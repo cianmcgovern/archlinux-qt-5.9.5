@@ -8,7 +8,9 @@ before_script:
   - docker run -t -d --volume ${TRAVIS_BUILD_DIR}:/work:ro --name arch archlinux:latest
 
 script:
-  - docker exec -t arch ./build.sh
+  - pwd
+  - ls -la
+  - docker exec -t arch build.sh
 
 after_script:
   - docker cp arch:/packages/ .
