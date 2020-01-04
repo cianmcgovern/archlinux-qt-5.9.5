@@ -1,0 +1,15 @@
+language: cpp
+
+services:
+  - docker
+
+before_script:
+  - docker pull archlinux:latest
+  - docker run -t -d --volume --volume ${TRAVIS_BUILD_DIR}:/work:ro --name arch archlinux:latest
+
+script:
+  - docker exec -t arch ./build.sh
+
+after_script:
+  - docker cp arch:/packages/ .
+  - docker stop arch
