@@ -13,9 +13,10 @@ pacman --noconfirm -Syu
 pacman --noconfirm -S base-devel
 
 mkdir /packages && chown build /packages
+mkdir /builddir && chown build /builddir
 export PKGDEST=/packages
-export BUILDDIR=/tmp
-export SRCDEST=/tmp
+export BUILDDIR=/builddir
+export SRCDEST=/builddir
 export PACKAGER="Cian McGovern (Travis CI) <cian@cianmcgovern.com>"
 
 PACKAGES="qt5-base-595 qt5-xmlpatterns-595 qt5-declarative-595 qt5-location-595 qt5-quickcontrols-595 qt5-tools-595 qt5-webchannel-595 qt5-webengine-595 qt5-x11extras-595"
