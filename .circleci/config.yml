@@ -2,18 +2,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: archlinux:latest
+      - image: imrehg/archlinux-makepkg
     steps:
-      - run: |
-          pacman -Syy --noconfirm
-          pacman --noconfirm -S git
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
-      - run: |
-          find . -type f -exec chmod o+rw {} \;
-          find . -type d -exec chmod o+rwx {} \;
-          ./build.sh
+      - run: ./build.sh
 workflows:
   version: 2
   build_and_test:
