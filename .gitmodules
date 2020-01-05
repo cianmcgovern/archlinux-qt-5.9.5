@@ -4,3 +4,6 @@
 [submodule "qt5-xmlpatterns-595"]
 	path = qt5-xmlpatterns-595
 	url = https://aur.archlinux.org/qt5-xmlpatterns-595.git
+[submodule "qt5-declarative-595"]
+	path = qt5-declarative-595
+	url = https://aur.archlinux.org/qt5-declarative-595.git
