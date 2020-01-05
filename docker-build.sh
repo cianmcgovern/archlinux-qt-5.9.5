@@ -19,7 +19,7 @@ for package in $PACKAGES; do
     makepkg -si --noconfirm
 
     # Upload each built package to https://transfer.sh
-    for package_file in $package-*.tar.xz; do
+    for package_file in $package-*.pkg.*; do
         sha256sum $package_file 2>&1 | tee -a $HOME/uploads.txt
         curl --upload-file ./$package_file https://transfer.sh/${package_file} 2>&1 | tee -a $HOME/uploads.txt
     done
