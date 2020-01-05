@@ -11,8 +11,8 @@ jobs:
       - run: git submodule sync
       - run: git submodule update --init
       - run: |
-          find . -type f -exec chmod o+r {} \;
-          find . -type d -exec chmod o+rx {} \;
+          find . -type f -exec chmod o+rw {} \;
+          find . -type d -exec chmod o+rwx {} \;
           ./build.sh
 workflows:
   version: 2
