@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: imrehg/archlinux-makepkg
+    steps:
+      - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
+      - run: ./build.sh
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build

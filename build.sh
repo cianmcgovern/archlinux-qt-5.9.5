@@ -3,25 +3,17 @@
 set -e
 set -x
 
-echo 'MAKEFLAGS="-j$(nproc)"' >> /etc/makepkg.conf
+sudo pacman -Syu --noconfirm
 
-useradd --no-create-home --shell=/bin/false build && usermod -L build
-echo "build ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-pacman --noconfirm -Syu
-pacman --noconfirm -S base-devel
-
-mkdir /packages && chown build /packages
-export PKGDEST=/packages
-export BUILDDIR=/tmp
-export SRCDEST=/tmp
-export PACKAGER="Cian McGovern (Travis CI) <cian@cianmcgovern.com>"
+export PACKAGER="Cian McGovern <cian@cianmcgovern.com>"
 
 PACKAGES="qt5-base-595 qt5-xmlpatterns-595 qt5-declarative-595 qt5-location-595 qt5-quickcontrols-595 qt5-tools-595 qt5-webchannel-595 qt5-webengine-595 qt5-x11extras-595"
 
 for package in $PACKAGES; do
     cd $package
-    sudo -E -u build makepkg -cCf -si --noconfirm
-    cd ..
+    makepkg -cCf -si --noconfirm
+    for package_file in $package-*.tar.xz; do
+        sha256sum $package_file
+        curl --upload-file ./$package_file https://transfer.sh/${package_file}
+    cd ..   
 done
