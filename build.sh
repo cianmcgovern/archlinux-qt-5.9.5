@@ -21,7 +21,6 @@ export PACKAGER="Cian McGovern (Travis CI) <cian@cianmcgovern.com>"
 PACKAGES="qt5-base-595 qt5-xmlpatterns-595 qt5-declarative-595 qt5-location-595 qt5-quickcontrols-595 qt5-tools-595 qt5-webchannel-595 qt5-webengine-595 qt5-x11extras-595"
 
 for package in $PACKAGES; do
-    ls -la
     cd $package
     sudo -E -u build makepkg -cCf -si --noconfirm
     cd ..
