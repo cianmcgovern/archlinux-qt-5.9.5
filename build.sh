@@ -23,6 +23,8 @@ PACKAGES="qt5-base-595 qt5-xmlpatterns-595 qt5-declarative-595 qt5-location-595 
 for package in $PACKAGES; do
     cd $package
     ls -la
+    sudo -E -u build pwd
+    sudo -E -u build ls -la
     sudo -E -u build makepkg -cCf -si --noconfirm
     cd ..
 done
