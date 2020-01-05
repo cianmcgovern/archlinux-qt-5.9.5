@@ -23,4 +23,5 @@ for package in $PACKAGES; do
         sha256sum $package_file
         curl --upload-file ./$package_file https://transfer.sh/${package_file}
     cd ..   
+    done
 done
