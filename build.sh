@@ -3,6 +3,8 @@
 set -e
 set -x
 
+sudo pacman -Syu --noconfirm
+
 echo 'MAKEFLAGS="-j$(nproc)"' | sudo tee -a /etc/makepkg.conf
 
 export PACKAGER="Cian McGovern (Travis CI) <cian@cianmcgovern.com>"
