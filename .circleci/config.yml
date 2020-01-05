@@ -8,9 +8,11 @@ jobs:
           pacman -Syy --noconfirm
           pacman --noconfirm -S git
       - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
       - run: |
           ls -la
-          build.sh
+          ./build.sh
 workflows:
   version: 2
   build_and_test:
