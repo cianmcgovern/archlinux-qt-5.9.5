@@ -7,6 +7,7 @@ jobs:
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
+      - run: echo 'MAKEFLAGS="-j2"' | sudo tee -a /etc/makepkg.conf
       - run: ./docker-build.sh
 workflows:
   version: 2
