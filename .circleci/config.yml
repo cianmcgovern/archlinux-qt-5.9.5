@@ -5,8 +5,8 @@ jobs:
       - image: archlinux:latest
     steps:
       - run: |
-          pacman -Syy
-          pacman -S git
+          pacman -Syy --noconfirm
+          pacman --noconfirm -S git
       - checkout
       - run: |
           ls -la
