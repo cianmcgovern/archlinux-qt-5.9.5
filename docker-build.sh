@@ -20,8 +20,11 @@ for package in $PACKAGES; do
 
     # Upload each built package to https://transfer.sh
     for package_file in $package-*.tar.xz; do
-        sha256sum $package_file
-        curl --upload-file ./$package_file https://transfer.sh/${package_file}
-    cd ..   
+        sha256sum $package_file 2>&1 | tee -a $HOME/uploads.txt
+        curl --upload-file ./$package_file https://transfer.sh/${package_file} 2>&1 | tee -a $HOME/uploads.txt
     done
+
+    cd ..
 done
+
+cat $HOME/uploads.txt
