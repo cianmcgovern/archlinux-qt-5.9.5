@@ -27,4 +27,6 @@ for package in $PACKAGES; do
     cd ..
 done
 
+repo-add archlinux-qt-595.db.tar.zst *.pkg.*
+
 cat $HOME/packages.txt
