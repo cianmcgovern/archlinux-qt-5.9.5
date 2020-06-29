@@ -20,11 +20,11 @@ for package in $PACKAGES; do
 
     # Upload each built package to https://transfer.sh
     for package_file in $package-*.pkg.*; do
-        sha256sum $package_file | tee -a $HOME/packages.txt
-        mv $package_file $HOME
+        sha256sum $package_file | tee -a $WORKSPACE/packages.txt
+        mv $package_file $WORKSPACE
     done
 
     cd ..
 done
 
-cat $HOME/packages.txt
+cat $WORKSPACE/packages.txt
